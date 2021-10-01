@@ -39,25 +39,25 @@ traversal-route:
   http-connection-timeout: 4500
   http-connection-read-timeout: 4500
   resourceUrl: https://raw.githubusercontent.com/mledoze/countries/master/countries.json
-   
-  datasource:
-    url: jdbc:h2:mem:routingdb
-    driverClassName: org.h2.Driver
-    username: sa
-    password: password
+  
+  #datasource:
+    #url: jdbc:h2:mem:routingdb
+    #driverClassName: org.h2.Driver
+    #username: sa
+    #password: password
     
-  jpa: 
-    database-platform: org.hibernate.dialect.H2Dialect
-    show-sql: true
-    properties: 
-      hibernate: 
-        dialect: org.hibernate.dialect.H2Dialect
-    hibernate: 
-      ddl-auto: update
+  #jpa: 
+    #database-platform: org.hibernate.dialect.H2Dialect
+    #show-sql: true
+    #properties: 
+      #hibernate: 
+        #dialect: org.hibernate.dialect.H2Dialect
+    #hibernate: 
+      #ddl-auto: update
 
-  h2: 
-    console: 
-      enabled: true
-      path: /h2-ui
+  #h2: 
+    #console: 
+      #enabled: true
+      #path: /h2-ui
 
 
