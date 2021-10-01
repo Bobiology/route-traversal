@@ -14,7 +14,7 @@ To test the project from POSTMAN
 
 _Clone the project, build and run._
 
-**Maven build-run command: ** _mvn spring-boot:run_
+**Maven build-run command:** _mvn spring-boot:run_
 
 - Set the _Context-Type_=_application/json_ on the header
 - Use basic authentication with **admin** username and **password** as password
@@ -36,5 +36,5 @@ CZE/ITA
 ![image](https://user-images.githubusercontent.com/15633518/135663521-0daa6c42-0ed7-4ca2-9ba8-299286eb30ba.png)
 
 _To be included ..._
-- CICD pipeline...
+- CI/CD pipeline...
 - Containerization...
