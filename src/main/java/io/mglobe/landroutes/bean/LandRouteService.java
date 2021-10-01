@@ -59,8 +59,8 @@ public class LandRouteService {
 
 		originSet.retainAll(destinationSet);
 		String commonRoute = originSet + "";
-		String finalRoute = origin + "," + commonRoute.substring(1, commonRoute.length() - 1) + "," + destination;
-		List<String> originRoute = new ArrayList<String>(Arrays.asList(finalRoute.split(",")));
+		String finalRoute = origin + ", " + commonRoute.substring(1, commonRoute.length() - 1).trim() + ", " + destination;
+		List<String> originRoute = new ArrayList<String>(Arrays.asList(finalRoute.split("[\\s,]+")));
 
 		wrapper.setRoute(originRoute);
 		return wrapper;
