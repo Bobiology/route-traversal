@@ -8,12 +8,13 @@ A Spring-boot project that returns a list of routes bordering the provided origi
 
 **NB:** The initial call will be slower compared to the subsequent calls. During the initial API call, data is **fetched**, **transformed** and **loaded** to the **persistent queue** from which subsequent calls we be reading from, without necessarily calling the **3rd party data provider** endpoint.
 
-**3rd Party Data Provider endpoint.**__ : ​https://raw.githubusercontent.com/mledoze/countries/master/countries.json
+**3rd Party Data Provider endpoint.**_ : ​https://raw.githubusercontent.com/mledoze/countries/master/countries.json
 
-To test the project from POSTMAN;
+To test the project from POSTMAN
+
 _Clone the project, build and run._
 
-**mvn spring-boot:run**
+**Maven build-run command: ** _mvn spring-boot:run_
 
 - Set the _Context-Type_=_application/json_ on the header
 - Use basic authentication with **admin** username and **password** as password
