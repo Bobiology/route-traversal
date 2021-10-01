@@ -1,5 +1,5 @@
 # route-traversal
-A Spring-boot project that returns a list of routes bordering the provided origin and destination countries.
+A Spring-boot application that exposes REST endpoint ​/routing/{origin}/{destination}​ that returns a list of border crossings to get from origin to destination
 
 **PROCESS FLOW DESIGN**
 
