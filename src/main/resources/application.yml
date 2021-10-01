@@ -1,0 +1,9 @@
+# spring boot management server instance properties
+spring:
+  application:
+    name: land-route
+  profiles:
+    active: dev
+
+
+
