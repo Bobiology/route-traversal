@@ -1,6 +1,12 @@
 # route-traversal
 A Spring-boot project that returns a list route bordering the provided origin and destination countries.
 
+**PROCESS FLOW DESIGN**
+
+![image](https://user-images.githubusercontent.com/15633518/135681344-2ce5a8a6-227a-430f-8fba-cd76a50b528c.png)
+
+
+
 To test the project from POSTMAN;
 _Clone the project, build and run._
 
