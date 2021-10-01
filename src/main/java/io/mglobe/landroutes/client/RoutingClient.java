@@ -7,6 +7,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -33,9 +35,9 @@ public class RoutingClient {
 	@Autowired
 	private RestTemplateConfig restTemplateConfig = new RestTemplateConfig();
 	
-	public LandRouteModel[] sendGetRequest(){
+	public HashMap<String,List<String>> sendGetRequest(){
 		    String endpoint = routeConfig.getEndpoint();
-
+		    HashMap<String,List<String>> simpleQueue = new HashMap<>();
 		    StringBuilder response = new StringBuilder();
 			try {
 				URL url = new URL(endpoint);
@@ -58,7 +60,11 @@ public class RoutingClient {
 					}
 					LandRouteModel[] data = gson.fromJson(response.toString(), LandRouteModel[].class);
 					LOG.info(timelog+" : TRAVERSAL RESPONSE = "+Arrays.deepToString(data));
-					return data;
+					
+					for(int i=0;i<data.length;i++) {
+						simpleQueue.put(data[i].getCca3(), data[i].getBorders());
+					}
+					return simpleQueue;
 				default:
 					isr = new InputStreamReader(httpCon.getErrorStream());
 					br = new BufferedReader(isr);

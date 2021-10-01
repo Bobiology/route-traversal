@@ -2,6 +2,8 @@ package io.mglobe.landroutes.bean;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -23,73 +25,71 @@ import io.mglobe.landroutes.utils.LandRouteProps;
 public class LandRouteService {
 	public final Logger LOG = LogManager.getLogger(RoutingClient.class);
 	String timelog = new SimpleDateFormat("yyyyMMddHHmmssSS").format(new java.util.Date());
-
-	//@Autowired
-	//RouteRepository repository;
+	// public static HashMap<String, List<String>> simpleQueue = new HashMap<>();
+	// @Autowired
+	// RouteRepository repository;
 	@Autowired
 	LandRouteProps landRouteProps;
 
 	public LandRouteProps getConfigProps() {
 		return landRouteProps;
 	}
-	
-	public ResponseWrapper processRoutingRequest(String origin, String destination){
-		LandRouteModel[] boarders = null;
 
+	public ResponseWrapper processRoutingRequest(String origin, String destination) {
 		ResponseWrapper wrapper = new ResponseWrapper();
-		
-		boarders = new RoutingClient(landRouteProps).sendGetRequest();
-		//List<String> resp = sanitizeResponse(boarders,origin,destination);
-		List<String> resp = sanitizeResponse(boarders, origin,destination);
-		
-		wrapper.setRoute(resp);
+
+		HashMap<String, List<String>> simpleQueue = new HashMap<>();
+		simpleQueue = new RoutingClient(landRouteProps).sendGetRequest();
+		Set<String> originSet = new HashSet<>();
+		Set<String> destinationSet = new HashSet<>();
+
+		if (simpleQueue.get(origin) != null || !simpleQueue.get(origin).isEmpty()) {
+			List<String> originBorder = simpleQueue.get(origin);
+			for (String i : originBorder) {
+				originSet.add(i);
+			}
+
+		}
+		if (simpleQueue.get(destination) != null || !simpleQueue.get(destination).isEmpty()) {
+			List<String> destBorder = simpleQueue.get(destination);
+			for (String i : destBorder) {
+				destinationSet.add(i);
+			}
+		}
+
+		originSet.retainAll(destinationSet);
+		String commonRoute = originSet + "";
+		String finalRoute = origin + "," + commonRoute.substring(1, commonRoute.length() - 1) + "," + destination;
+		List<String> originRoute = new ArrayList<String>(Arrays.asList(finalRoute.split(",")));
+
+		wrapper.setRoute(originRoute);
 		return wrapper;
 	}
-	public List<String> sanitizeResponse(LandRouteModel[] locationData, String origin, String destination){
-		Set<String> visited = new HashSet<>();
-		List<String> output = new ArrayList<>();
-		//RouteModel[] locationData = repository.findByCca3(origin);
-		
-		// O(N * M)
-		// N = size array
-		// M size boarder
-		int n = locationData.length;
-		for (int i = 0; i < n; i++) {
-			if (locationData[i].getBoardermap().get(origin) != null) {
-				output.add(origin);
-				locationData[i].getBoardermap().get(origin).forEach(c -> {
-					visited.add(c);
-				});
-			}
-			if (locationData[i].getBoardermap().get(destination) != null) {
-				locationData[i].getBoardermap().get(destination).forEach(c -> {
-					if (visited.contains(c)) {
-						output.add(c);
-					}
-				});
-			}
 
-		}
-		if (output.size() >= 2) {
-			output.add(destination);
-		}
-		return output;
-	}
-	
-	public RouteModel persistRecords() {
+	public HashMap<String, List<String>> persistRecords(HashMap<String, List<String>> simpleQueue) {
 		LandRouteModel[] boarders = null;
-		RouteModel routeModel = new RouteModel();
-		boarders = new RoutingClient(landRouteProps).sendGetRequest();
-		
-		for(int i=0; i<boarders.length;i++) {
-			routeModel.setBorders(boarders[i].getBorders());
-			routeModel.setCca3(boarders[i].getCca3());
-			routeModel.setLandlocked(boarders[i].getLandlocked());
-			routeModel.setLatlng(boarders[i].getLatlng());
-			//repository.save(routeModel);
+		// boarders = new RoutingClient(landRouteProps).sendGetRequest();
+
+		for (int i = 0; i < boarders.length; i++) {
+			// routeModel.setBorders(boarders[i].getBorders());
+			// routeModel.setCca3(boarders[i].getCca3());
+			// routeModel.setLandlocked(boarders[i].getLandlocked());
+			// routeModel.setLatlng(boarders[i].getLatlng());
+			simpleQueue.put(boarders[i].getCca3(), boarders[i].getBorders());
+			// repository.save(routeModel);
 		}
-		LOG.info(timelog+" : LOADED DATA = "+routeModel);
-		return routeModel;
-		
+		LOG.info(timelog + " : LOADED DATA = " + simpleQueue);
+		return simpleQueue;
 	}
+
+	public HashMap<String, List<String>> persistRec() {
+		// LandRouteModel[] boarders = null;
+		HashMap<String, List<String>> simpleQueue = null;
+		simpleQueue = new RoutingClient(landRouteProps).sendGetRequest();
+
+		LOG.info(timelog + " : LOADED DATA = " + simpleQueue);
+		return simpleQueue;
+
+	}
+
 }
