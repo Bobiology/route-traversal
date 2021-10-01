@@ -8,6 +8,8 @@ mvn spring-boot:run
 - Use basic authentication with **admin** username and **password** as password
 - **Endpoint**: http://localhost:8084/routing/AFG/TKM
 - **Method**: GET
+
+
 **Configuration Screenshots**
 ![image](https://user-images.githubusercontent.com/15633518/135663025-eb653625-da18-4e78-957e-30d80db0b34d.png)
 ![image](https://user-images.githubusercontent.com/15633518/135663328-a3e81945-c009-465d-874c-81bb695d4ed8.png)
