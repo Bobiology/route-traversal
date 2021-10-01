@@ -6,7 +6,7 @@ _Clone the project, build and run._
 
 **mvn spring-boot:run**
 
-- set the _Context-Type_=_application/json_ on the header
+- Set the _Context-Type_=_application/json_ on the header
 - Use basic authentication with **admin** username and **password** as password
 - **Endpoint**: http://localhost:8084/routing/AFG/TKM
 - **Method**: GET
