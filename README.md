@@ -3,7 +3,9 @@ A Spring-boot project that returns a list route bordering the provided origin an
 
 To test the project from POSTMAN;
 _Clone the project, build and run._
+
 mvn spring-boot:run
+
 - set the _Context-Type_=_application/json_ on the header
 - Use basic authentication with **admin** username and **password** as password
 - **Endpoint**: http://localhost:8084/routing/AFG/TKM
