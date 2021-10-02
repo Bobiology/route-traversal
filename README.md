@@ -10,8 +10,6 @@ A Spring-boot application that exposes REST endpoint ​/routing/{origin}/{desti
 
 **3rd Party Data Provider endpoint.**_ : ​https://raw.githubusercontent.com/mledoze/countries/master/countries.json
 
-To test the project from POSTMAN
-
 _Clone the project, build and run._
 
 **OR**
@@ -22,10 +20,12 @@ Pull the image from **DockerHub** and spin it up.
 
 **Maven build-run command:** _mvn spring-boot:run_
 
+To test the service from POSTMAN ensure to;
+
 - Set the _Context-Type_=_application/json_ on the header
 - Use basic authentication with **admin** username and **password** as password
-- **Endpoint**: http://localhost:8084/routing/AFG/TKM
-- **Method**: GET
+- Use **Endpoint**: http://localhost:8084/routing/AFG/TKM
+- Use **Method**: GET
 
 
 **Configuration Screenshots**
