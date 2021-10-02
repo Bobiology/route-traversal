@@ -21,7 +21,7 @@ info:
     
 management:
   server:
-    port: 8082
+    port: 8084
   endpoints: 
     web: 
       exposure: 

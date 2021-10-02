@@ -1,0 +1,63 @@
+# spring boot management server instance properties
+spring:
+  application:
+    name: traversal-routes
+  #profiles: dev
+  config: 
+    activate:
+      on-profile: dev
+#API Authentication
+  security: 
+    user: 
+      name: admin
+      password: password
+      roles: USER
+      
+info:
+  app:
+    name: traversal-routes
+    description: This service will calculate traversal route from one country to another.
+    version: 1.0.0
+    
+management:
+  server:
+    port: 8084
+  endpoints: 
+    web: 
+      exposure: 
+        include: '*'
+    
+server:
+  port: 8084
+  
+#logging configuration path
+logging:
+  config: classpath:logback.xml
+
+traversal-route: 
+  http-connection-request-timeout: 4500
+  http-connection-timeout: 4500
+  http-connection-read-timeout: 4500
+  resourceUrl: https://raw.githubusercontent.com/mledoze/countries/master/countries.json
+  
+  #datasource:
+    #url: jdbc:h2:mem:routingdb
+    #driverClassName: org.h2.Driver
+    #username: sa
+    #password: password
+    
+  #jpa: 
+    #database-platform: org.hibernate.dialect.H2Dialect
+    #show-sql: true
+    #properties: 
+      #hibernate: 
+        #dialect: org.hibernate.dialect.H2Dialect
+    #hibernate: 
+      #ddl-auto: update
+
+  #h2: 
+    #console: 
+      #enabled: true
+      #path: /h2-ui
+
+
