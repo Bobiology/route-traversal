@@ -5,8 +5,6 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import io.mglobe.landroutes.bean.LandRouteService;
-
 
 @SpringBootApplication(scanBasePackages={"io.mglobe.landroutes"})
 public class Application {
@@ -15,11 +13,6 @@ public class Application {
 		
 		SpringApplication.run(Application.class, args);
 		LOG.info("===================================== STARTING ====================================");
-		
-		//LandRouteService rservice = new LandRouteService();
-		//rservice.persistRecords();
-		
-		
 		LOG.info("================== LAND TRAVERSAL ROUTES SERVICE ==================");
 		LOG.info("===================================================================================");
 

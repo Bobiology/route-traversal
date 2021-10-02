@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import io.mglobe.landroutes.client.RoutingClient;
-import io.mglobe.landroutes.model.LandRouteModel;
 import io.mglobe.landroutes.model.ResponseWrapper;
 import io.mglobe.landroutes.utils.LandRouteProps;
 
