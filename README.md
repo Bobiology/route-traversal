@@ -34,13 +34,24 @@ To test the service from POSTMAN ensure to;
 
 **Test Data**
 
-CZE/ITA
+AFG/TKM
 
 **Sample Response Output**
 
 ![image](https://user-images.githubusercontent.com/15633518/135663397-85d2fa9c-5f40-49dc-bf5c-24fa7e34b16d.png)
+
+**Test Data**
+
+CZE/ITA
+
+**Sample Response Output**
+
 ![image](https://user-images.githubusercontent.com/15633518/135663521-0daa6c42-0ed7-4ca2-9ba8-299286eb30ba.png)
 
-_To be included ..._
-- CI/CD pipeline...
-- Containerization...
+_Included ..._
+- Jenkins pipeline
+- Docker Image
+- Mockito Unit Test
+- Swagger-ui
+- Actuator
+- Authentication
