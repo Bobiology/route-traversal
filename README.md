@@ -14,6 +14,12 @@ To test the project from POSTMAN
 
 _Clone the project, build and run._
 
+**OR**
+
+Pull the image from **DockerHub** and spin it up.
+
+**DOCKER PULL COMMAND:** _docker pull bobiologist/route-traversal:latest_
+
 **Maven build-run command:** _mvn spring-boot:run_
 
 - Set the _Context-Type_=_application/json_ on the header
