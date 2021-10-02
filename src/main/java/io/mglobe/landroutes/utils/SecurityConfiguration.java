@@ -18,7 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.stereotype.Component;
 
-import io.mglobe.landroutes.bean.LandRouteService;
+import io.mglobe.landroutes.service.LandRouteService;
 
 
 @Configuration

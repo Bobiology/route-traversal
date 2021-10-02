@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.mglobe.landroutes.bean.LandRouteService;
 import io.mglobe.landroutes.model.ResponseWrapper;
+import io.mglobe.landroutes.service.LandRouteService;
 
 @RestController
 @RequestMapping(value = "/routing")
@@ -35,7 +35,7 @@ public class LandRouteController {
 			return ResponseEntity.status(412).body(null);
 		} else if (destination == null || destination.isEmpty()) {
 			return ResponseEntity.status(412).body(null);
-		} else if (respo.getRoute().isEmpty() || respo.getRoute() == null || respo.getRoute().toArray().length < 2) {
+		} else if (respo.getRoute().isEmpty() || respo.getRoute() == null || respo.getRoute().toArray().length < 3) {
 			LOG.info(timelog + " :NOT FOUND");
 			return ResponseEntity.notFound().build();
 		} else {

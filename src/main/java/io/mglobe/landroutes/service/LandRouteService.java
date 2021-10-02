@@ -1,4 +1,4 @@
-package io.mglobe.landroutes.bean;
+package io.mglobe.landroutes.service;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -37,21 +37,23 @@ public class LandRouteService {
 		}
 		Set<String> originSet = new HashSet<>();
 		Set<String> destinationSet = new HashSet<>();
+		try {
+			if (simpleQueue.get(origin) != null || !simpleQueue.get(origin).isEmpty()) {
+				List<String> originBorder = simpleQueue.get(origin);
+				for (String i : originBorder) {
+					originSet.add(i);
+				}
 
-		if (simpleQueue.get(origin) != null || !simpleQueue.get(origin).isEmpty()) {
-			List<String> originBorder = simpleQueue.get(origin);
-			for (String i : originBorder) {
-				originSet.add(i);
 			}
-
-		}
-		if (simpleQueue.get(destination) != null || !simpleQueue.get(destination).isEmpty()) {
-			List<String> destBorder = simpleQueue.get(destination);
-			for (String i : destBorder) {
-				destinationSet.add(i);
+			if (simpleQueue.get(destination) != null || !simpleQueue.get(destination).isEmpty()) {
+				List<String> destBorder = simpleQueue.get(destination);
+				for (String i : destBorder) {
+					destinationSet.add(i);
+				}
 			}
+		} catch (Exception e) {
+			LOG.error(timelog + " : ROUTE NOT FOUND " + e.getMessage());
 		}
-
 		originSet.retainAll(destinationSet);
 		String commonRoute = originSet + "";
 		String finalRoute = origin + ", " + commonRoute.substring(1, commonRoute.length() - 1).trim() + ", "
