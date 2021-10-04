@@ -36,9 +36,10 @@ public class RoutingClient {
 	private RestTemplateConfig restTemplateConfig = new RestTemplateConfig();
 	
 	public HashMap<String,List<String>> sendGetRequest(){
-		    String endpoint = routeConfig.getEndpoint();
-		    HashMap<String,List<String>> simpleQueue = new HashMap<>();
+		    String endpoint = routeConfig.getEndpoint(); // Get endpoint from configuration properties.
+		    HashMap<String,List<String>> simpleQueue = new HashMap<>(); // declare a queue variable.
 		    StringBuilder response = new StringBuilder();
+		//Make http api call and read response
 			try {
 				URL url = new URL(endpoint);
 				URLConnection urlCon = url.openConnection();
@@ -58,13 +59,14 @@ public class RoutingClient {
 					while ((line = br.readLine()) != null) {
 						response.append(line);
 					}
+					// parse the response object and add to an array of LandRouteModel object
 					LandRouteModel[] data = gson.fromJson(response.toString(), LandRouteModel[].class);
 					LOG.info(timelog+" : TRAVERSAL RESPONSE = "+Arrays.deepToString(data));
-					
+					//loop the data object and add border list and cca3 values to the queue
 					for(int i=0;i<data.length;i++) {
 						simpleQueue.put(data[i].getCca3(), data[i].getBorders());
 					}
-					return simpleQueue;
+					return simpleQueue; // return the queue
 				default:
 					isr = new InputStreamReader(httpCon.getErrorStream());
 					br = new BufferedReader(isr);
