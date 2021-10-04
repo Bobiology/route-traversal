@@ -26,7 +26,7 @@ public class RoutingClient {
 
 	static private Gson gson = new Gson();
 	
-	
+	//initializing configuration properties
 	LandRouteProps routeConfig;
 	public RoutingClient(LandRouteProps routeConfig) {
 		this.routeConfig = routeConfig;
