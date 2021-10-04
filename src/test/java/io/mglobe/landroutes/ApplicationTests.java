@@ -28,7 +28,7 @@ import io.mglobe.landroutes.model.ResponseWrapper;
  *
  */
 
-//@SpringBootTest
+//Executing unit tests
 @WebMvcTest(LandRouteController.class)
 class ApplicationTests {
 	@Autowired
@@ -42,6 +42,7 @@ class ApplicationTests {
 	@Mock
 	LandRouteController landRouteController;
 	
+	//login test case
 	@Test
 	public void login() throws Exception {
 
@@ -51,6 +52,7 @@ class ApplicationTests {
 
 	}
 
+	//First test case
 	@Test
     public void getFirstTestRoute() throws Exception {
 		
@@ -65,7 +67,7 @@ class ApplicationTests {
 		
 		assertEquals(4, responseWrapper.getRoute().size());
     }
-	
+	//Second test case
 	@Test
     public void getSecondTestRoute() throws Exception {
 		
