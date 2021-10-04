@@ -58,7 +58,7 @@ public class LandRouteService {
 				}
 			}
 		} catch (Exception e) {
-			LOG.error(timelog + " : NOT ROUTES FOUND " + e.getMessage());
+			LOG.error(timelog + " : NO ROUTES FOUND " + e.getMessage());
 		}
 		
 		originSet.retainAll(destinationSet); //find the union of the origin set and destination set.
