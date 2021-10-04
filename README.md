@@ -23,7 +23,7 @@ Pull the image from **DockerHub**
 **DOCKER PULL COMMAND:** _docker pull bobiologist/route-traversal:latest_
 
 Spin up the container
-**Command**: _docker run -d route-traversal:latest_
+**Command**: _docker run -d -p 8084:8084 route-traversal:latest_
 
 To test the service from POSTMAN ensure to;
 
