@@ -9,16 +9,20 @@ A Spring-boot application that exposes REST endpoint ​/routing/{origin}/{desti
 **NB:** The initial call will be slower compared to the subsequent calls. During the initial API call, data is **fetched**, **transformed** and **loaded** to the **persistent queue** from which subsequent calls we be reading from, without necessarily calling the **3rd party data provider** endpoint.
 
 **3rd Party Data Provider endpoint.**_ : ​https://raw.githubusercontent.com/mledoze/countries/master/countries.json
+TESTING THE SERVICE
 
 _Clone the project, build and run._
 
+**Maven build-run command:** _mvn spring-boot:run_
+
 **OR**
 
-Pull the image from **DockerHub** and spin it up.
+Pull the image from **DockerHub** 
 
 **DOCKER PULL COMMAND:** _docker pull bobiologist/route-traversal:latest_
 
-**Maven build-run command:** _mvn spring-boot:run_
+Spin up the container
+**Command**: _docker run -d route-traversal:latest_
 
 To test the service from POSTMAN ensure to;
 
