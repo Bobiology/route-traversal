@@ -22,7 +22,7 @@
     	<repository>
       		<id>github</id>
       		<name>GitHub Packages</name>
-      		<url>https://maven.pkg.github.com/mglobe/route-traversal</url>
+      		<url>https://maven.pkg.github.com/bobiology/route-traversal</url>
     	</repository>
      </distributionManagement>
 	<dependencies>
