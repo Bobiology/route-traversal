@@ -48,9 +48,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
           .roles(basicAuthRoles);
     }
 
-    @Override
+    /*@Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf()//.disable()
+        http.csrf().disable()
           .authorizeRequests()
           .anyRequest().authenticated()
           .and()
@@ -59,7 +59,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.addFilterAfter(new CustomSecurityHeaderFilter(),
           BasicAuthenticationFilter.class);
     }
-
+*/
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
